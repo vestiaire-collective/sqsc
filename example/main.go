@@ -1,21 +1,45 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/chaseisabelle/sqsc"
-	"os"
 )
 
 func main() {
-	bod := os.Args[1]
+	bod := flag.String("message", "bla bla bla", "the message body")
+	reg := flag.String("region", "", "aws region")
+	url := flag.String("url", "", "queue url")
+	ep := flag.String("endpoint", "", "aws endpoint")
+	id := flag.String("id", "", "aws account id")
+	key := flag.String("key", "", "aws account secret")
+	sec := flag.String("secret", "", "aws account secret")
+	q := flag.String("queue", "", "queue name")
+	ret := flag.Int("retries", 0, "max retries")
+	to := flag.Int("timeout", 0, "timeout")
+	wt := flag.Int("wait", 0, "wait time")
 
-	cli, err := sqsc.New(&sqsc.Config{
-		Region:   "us-east-1",
-		URL:      "http://localhost:4100/queue/job",
-		Endpoint: "http://127.0.0.1:4100",
-	})
+	flag.Parse()
 
-	res, err := cli.Produce(bod, 0)
+	cfg := sqsc.Config{
+		Region:   *reg,
+		URL:      *url,
+		Endpoint: *ep,
+		ID:       *id,
+		Key:      *key,
+		Secret:   *sec,
+		Queue:    *q,
+		Retries:  *ret,
+		Timeout:  *to,
+		Wait:     *wt,
+	}
+
+	cli, err := sqsc.New(&cfg)
+
+	fmt.Printf("client: %+v\n", cli)
+	fmt.Printf("error:  %+v\n", err)
+
+	res, err := cli.Produce(*bod, 0)
 
 	fmt.Printf("produce response: %+v\n", res)
 	fmt.Printf("produce error:    %+v\n", err)
