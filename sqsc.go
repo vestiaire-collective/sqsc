@@ -17,11 +17,11 @@ type SQSC struct {
 // the client configs
 type Config struct {
 	ID       string //<< aws account id
-	Key    string //<< aws auth key
-	Secret   string //<< aws account secret
+	Key      string //<< aws auth key - leave blank for no auth
+	Secret   string //<< aws account secret - leave blank for no auth
 	Region   string //<< aws region
-	Queue    string //<< queue name
-	URL      string //<< queue url
+	Queue    string //<< queue name - not needed if url provided
+	URL      string //<< queue url - not needed if queue provided
 	Endpoint string //<< aws endpoint
 	Retries  int    //<< max retries
 	Timeout  int    //<< visibility timeout (seconds)
