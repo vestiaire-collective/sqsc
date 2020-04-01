@@ -17,7 +17,7 @@ type SQSC struct {
 // the client configs
 type Config struct {
 	ID       string //<< aws account id
-	Key    string //<< aws auth key
+	Key      string //<< aws auth key
 	Secret   string //<< aws account secret
 	Region   string //<< aws region
 	Queue    string //<< queue name
