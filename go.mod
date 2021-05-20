@@ -1,4 +1,4 @@
-module github.com/chaseisabelle/sqsc
+module github.com/vestiaire-collective/sqsc
 
 go 1.13
 

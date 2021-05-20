@@ -3,7 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/chaseisabelle/sqsc"
+
+	"github.com/vestiaire-collective/sqsc"
 )
 
 func main() {

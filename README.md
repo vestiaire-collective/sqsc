@@ -64,7 +64,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/chaseisabelle/sqsc"
+	"github.com/vestiaire-collective/sqsc"
 	"os"
 )
 
